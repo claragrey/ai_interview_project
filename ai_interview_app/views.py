@@ -36,8 +36,8 @@ from bs4 import BeautifulSoup
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
-genai.configure(api_key="AIzaSyBQhTgdeffYLYsH726KgHtvtF0i1YLjQ80")  # REPLACE with your actual API key
-model = genai.GenerativeModel("models/gemini-1.0-pro")
+genai.configure(api_key="AIzaSyCK6QGbjfgxpGm277pPbhmkIluqjYZJYuA")  # REPLACE with your actual API key
+model = genai.GenerativeModel("models/gemini-2.0-flash")
 
 DEVICE = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 mtcnn = MTCNN(select_largest=False, post_process=False, device=DEVICE).eval()
@@ -46,7 +46,7 @@ resnet = InceptionResnetV1(pretrained="vggface2", classify=False).to(DEVICE).eva
 
 def configure_model(api_key):
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("models/gemini-1.0-pro")
+    model = genai.GenerativeModel("models/gemini-2.0-flash")
     return model
 
 audio_alert = False
